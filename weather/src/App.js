@@ -33,12 +33,13 @@ function App() {
   }
 
   const changeDataHandler = (e) => {
-    if(e.key === 'Enter'){
-        axios.get(url).then(response=>{
-          setData(response.data);
-          setLocation('')
-      })
-    }
+
+    e.preventDefault()
+
+    axios.get(url).then(response=>{
+      setData(response.data);
+      setLocation('')
+    })
   }
 
   const weatherData = (we) =>{
@@ -69,13 +70,20 @@ function App() {
       </darkContext.Provider>
       <div className='cc'>
         <div className='Container' style={dark ? darkStyle:{backgroundColor:'white'}}>
-          <input
-            value={location}
-            onChange={ev => setLocation(curr => curr = ev.target.value)}
-            onKeyPress={changeDataHandler}
-            type='text' 
-            placeholder='Enter City'
-          />
+          <form onSubmit={changeDataHandler}>
+            <input
+              value={location}
+              onChange={ev => setLocation(curr => curr = ev.target.value)}
+              type='text' 
+              placeholder='Enter City'
+              className='scity'
+            />
+            <input
+              type='submit'
+              value={'Search'}
+              className='search'
+            />
+          </form>
           <h1 className='city' style={dark ? darkStyle:{backgroundColor:'white'}}>{data.name}</h1>
           <Weather icon = {data.weather != undefined ? weatherData(weather[0].main) : ""} weth = {data.weather != undefined ? weather[0].main : ''}/>
           {data.weather != undefined && listData.map(dato =>
