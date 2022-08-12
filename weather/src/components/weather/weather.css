@@ -1,0 +1,15 @@
+.weCont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.weCont p{
+    font-size: 25px;
+    font-weight: 700;
+    transform: rotate(270deg);
+    margin-left: -15px;
+    width: 75.56px; 
+    text-align: center;
+}

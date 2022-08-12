@@ -1,0 +1,15 @@
+.datCont{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 50px;
+}
+
+.cont{
+   width: 130px;
+}
+
+.cont p{
+   margin: 0;
+   font-weight: 700;
+}
